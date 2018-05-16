@@ -44,8 +44,7 @@ namespace SGCO.Migrations
                     new Estado() { UF = "SC", Nome = "Santa Catarina" },
                     new Estado() { UF = "SP", Nome = "São Paulo" },
                     new Estado() { UF = "SE", Nome = "Sergipe" },
-                    new Estado() { UF = "TO", Nome = "Tocantins " }
-            );
+                    new Estado() { UF = "TO", Nome = "Tocantins " });
         }
     }
 }

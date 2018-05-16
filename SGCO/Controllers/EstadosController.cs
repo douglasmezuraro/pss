@@ -11,121 +11,109 @@ using SGCO.Models;
 
 namespace SGCO.Controllers
 {
-    public class UsuariosController : Controller
+    public class EstadosController : Controller
     {
         private Contexto db = new Contexto();
 
-        // GET: Usuarios
+        // GET: Estados
         public ActionResult Index()
         {
-            return View(db.Usuarios.ToList());
+            return View(db.Estados.ToList());
         }
 
-        // GET: Usuarios/Details/5
+        // GET: Estados/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = db.Usuarios.Find(id);
-            if (usuario == null)
+            Estado estado = db.Estados.Find(id);
+            if (estado == null)
             {
                 return HttpNotFound();
             }
-            return View(usuario);
+            return View(estado);
         }
 
-        // GET: Usuarios/Create
+        // GET: Estados/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Usuarios/Create
+        // POST: Estados/Create
         // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Login,Senha,Nome,Sobrenome,CPF,Telefone,Email,Nascimento")] Usuario usuario)
+        public ActionResult Create([Bind(Include = "Id,UF,Nome")] Estado estado)
         {
             if (ModelState.IsValid)
             {
-                db.Usuarios.Add(usuario);
+                db.Estados.Add(estado);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(usuario);
+            return View(estado);
         }
 
-        // GET: Usuarios/Edit/5
+        // GET: Estados/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = db.Usuarios.Find(id);
-            if (usuario == null)
+            Estado estado = db.Estados.Find(id);
+            if (estado == null)
             {
                 return HttpNotFound();
             }
-            return View(usuario);
+            return View(estado);
         }
 
-        // POST: Usuarios/Edit/5
+        // POST: Estados/Edit/5
         // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Login,Senha,Nome,Sobrenome,CPF,Telefone,Email,Nascimento")] Usuario usuario)
+        public ActionResult Edit([Bind(Include = "Id,UF,Nome")] Estado estado)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(usuario).State = EntityState.Modified;
+                db.Entry(estado).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(usuario);
+            return View(estado);
         }
 
-        // GET: Usuarios/Delete/5
+        // GET: Estados/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = db.Usuarios.Find(id);
-            if (usuario == null)
+            Estado estado = db.Estados.Find(id);
+            if (estado == null)
             {
                 return HttpNotFound();
             }
-            return View(usuario);
+            return View(estado);
         }
 
-        // POST: Usuarios/Delete/5
+        // POST: Estados/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Usuario usuario = db.Usuarios.Find(id);
-            db.Usuarios.Remove(usuario);
+            Estado estado = db.Estados.Find(id);
+            db.Estados.Remove(estado);
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
-
-       
-        public ActionResult CidadeList()
-        {
-            var cidadeList = db.Cidades.ToList();
-          //  SelectList list = 
-          //  ViewBag.CidadeListaDeNomes = list;
-
-           ViewData["cidadeLista"] = new SelectList(cidadeList, "Id", "Nome");
-
-            return View();
         }
 
         protected override void Dispose(bool disposing)
