@@ -4,6 +4,7 @@ namespace PSS.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using PSS.Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<SGCO.Context.Context>
     {

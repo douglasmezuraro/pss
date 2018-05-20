@@ -13,5 +13,6 @@ namespace PSS.Models
 
         [Required][MinLength(UFLength), MaxLength(UFLength)]
         public string UF { get; set; }
+
     }
 }

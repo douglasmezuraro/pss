@@ -12,5 +12,6 @@ namespace PSS.Models
 
         [ScaffoldColumn(false)]
         public bool IsActive { get; set; }
+
     }
 }

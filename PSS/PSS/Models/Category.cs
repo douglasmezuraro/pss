@@ -8,5 +8,6 @@ namespace PSS.Models
     {
         [Required][MinLength(DescriptionMinLength), MaxLength(DescriptionMaxLength)]
         public string Name { get; set; }
+
     }
 }

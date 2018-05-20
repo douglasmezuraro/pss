@@ -13,5 +13,6 @@ namespace PSS.Models
         public int StateId { get; set; }
 
         public State State { get; set; }
+
     }
 }
