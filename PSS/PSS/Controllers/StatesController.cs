@@ -18,7 +18,7 @@ namespace PSS.Controllers
         // GET: States
         public ActionResult Index()
         {
-            return View(db.States.ToList());
+            return View(db.States.ToList().Where(b => b.IsActive == true));
         }
 
         // GET: States/Details/5
@@ -51,6 +51,7 @@ namespace PSS.Controllers
         {
             if (ModelState.IsValid)
             {
+                state.IsActive = true;
                 db.States.Add(state);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -111,7 +112,8 @@ namespace PSS.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             State state = db.States.Find(id);
-            db.States.Remove(state);
+            state.IsActive = false;
+            db.Entry(state).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

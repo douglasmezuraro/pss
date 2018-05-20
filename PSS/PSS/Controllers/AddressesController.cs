@@ -19,7 +19,7 @@ namespace PSS.Controllers
         public ActionResult Index()
         {
             var addresses = db.Addresses.Include(a => a.City);
-            return View(addresses.ToList());
+            return View(addresses.ToList().Where(b => b.IsActive == true));
         }
 
         // GET: Addresses/Details/5
@@ -53,6 +53,7 @@ namespace PSS.Controllers
         {
             if (ModelState.IsValid)
             {
+                address.IsActive = true;
                 db.Addresses.Add(address);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -116,7 +117,8 @@ namespace PSS.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Address address = db.Addresses.Find(id);
-            db.Addresses.Remove(address);
+            address.IsActive = false;
+            db.Entry(address).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
