@@ -18,7 +18,11 @@ namespace PSS.Controllers
         // GET: Users
         public ActionResult Index()
         {
-            var users = db.Users.Include(u => u.Address).Include(u => u.Gender).Include(u => u.UserType);
+            var users = db.Users.Include(u => u.Address)
+                                .Include(u => u.Gender)
+                                .Include(u => u.UserType)
+                                .Where(u => u.IsActive == true);
+
             return View(users.ToList());
         }
 
@@ -55,6 +59,7 @@ namespace PSS.Controllers
         {
             if (ModelState.IsValid)
             {
+                user.IsActive = true;
                 db.Users.Add(user);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -93,6 +98,7 @@ namespace PSS.Controllers
         {
             if (ModelState.IsValid)
             {
+                user.IsActive = true;
                 db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -124,7 +130,8 @@ namespace PSS.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             User user = db.Users.Find(id);
-            db.Users.Remove(user);
+            user.IsActive = false;
+            db.Entry(user).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
