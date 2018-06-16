@@ -84,6 +84,7 @@ namespace PSS.Controllers
         {
             if (ModelState.IsValid)
             {
+                state.IsActive = true;
                 db.Entry(state).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
