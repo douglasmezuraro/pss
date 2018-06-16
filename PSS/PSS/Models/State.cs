@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace PSS.Models
 {
     [Table("States")]
+    [DisplayName("Estado")]
     public class State : Base
     {
         private const int UFLength = 2;

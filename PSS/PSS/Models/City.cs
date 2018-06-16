@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace PSS.Models
 {
     [Table("Cities")]
+    [DisplayName("Cidade")]
     public class City : Base
     {
         [Required]
@@ -16,6 +17,7 @@ namespace PSS.Models
         [DisplayName("Estado")]
         public int StateId { get; set; }
 
+        [DisplayName("Estado")]
         public State State { get; set; }
     }
 }

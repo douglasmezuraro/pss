@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace PSS.Models
 {
     [Table("Users")]
+    [DisplayName("Usuário")]
     public class User : Base
     {
         protected const int CPFLength = 14;
@@ -44,21 +45,24 @@ namespace PSS.Models
         public string Password { get; set; }
 
         [Required]
-        [DisplayName("Tipo")]
+        [DisplayName("Tipo de usuário")]
         public int UserTypeId { get; set; }
 
+        [DisplayName("Tipo de usuário")]
         public UserType UserType { get; set; }
 
         [Required]
         [DisplayName("Endereço")]
         public int AddressId { get; set; }
 
+        [DisplayName("Endereço")]
         public Address Address { get; set; }
 
         [Required]
         [DisplayName("Gênero")]
         public int GenderId { get; set; }
 
+        [DisplayName("Gênero")]
         public Gender Gender { get; set; }
     }
 }

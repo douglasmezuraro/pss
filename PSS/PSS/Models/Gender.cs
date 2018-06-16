@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace PSS.Models
 {
     [Table("Genders")]
+    [DisplayName("Gênero")]
     public class Gender : Base
     {
         [Required]

@@ -1,13 +1,14 @@
 ﻿@model IEnumerable<PSS.Models.User>
+@using PSS.Utils.Constants
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = View.Index;
 }
 
-<h2>Index</h2>
+<h2>@View.Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink(View.Create, "Create")
 </p>
 <table class="table">
     <tr>
@@ -53,9 +54,9 @@
             @Html.DisplayFor(modelItem => item.Birth)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink(View.Edit, "Edit", new { id=item.Id }) |
+            @Html.ActionLink(View.Details, "Details", new { id=item.Id }) |
+            @Html.ActionLink(View.Delete, "Delete", new { id=item.Id })
         </td>
     </tr>
 }

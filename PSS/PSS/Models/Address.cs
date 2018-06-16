@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace PSS.Models
 {
     [Table("Addresses")]
+    [DisplayName("Endereço")]
     public class Address : Base
     {
         [Required]
@@ -30,6 +31,7 @@ namespace PSS.Models
         [DisplayName("Cidade")]
         public int CityId { get; set; }
 
+        [DisplayName("Cidade")]
         public City City { get; set; }
     }
 }

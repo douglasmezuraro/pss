@@ -1,13 +1,14 @@
 ﻿@model PSS.Models.User
+@using PSS.Utils.Constants
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = View.Details;
 }
 
-<h2>Details</h2>
+<h2>@View.Details</h2>
 
 <div>
-    <h4>User</h4>
+    <h4>@Html.DisplayNameFor(model => model)</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -82,17 +83,9 @@
             @Html.DisplayFor(model => model.Birth)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(View.Edit, "Edit", new { id = Model.Id }) |
+    @Html.ActionLink(View.BackToList, "Index")
 </p>
