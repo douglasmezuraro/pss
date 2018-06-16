@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PSS.Models
@@ -6,8 +7,9 @@ namespace PSS.Models
     [Table("Genders")]
     public class Gender : Base
     {
-        [Required][MinLength(DescriptionMinLength), MaxLength(DescriptionMaxLength)]
+        [Required]
+        [MinLength(DescriptionMinLength), MaxLength(DescriptionMaxLength)]
+        [DisplayName("Descrição")]
         public string Description { get; set; }
-
     }
 }

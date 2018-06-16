@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PSS.Models
@@ -8,11 +9,14 @@ namespace PSS.Models
     {
         private const int UFLength = 2;
 
-        [Required][MaxLength(DescriptionMaxLength)]
+        [Required]
+        [MaxLength(DescriptionMaxLength)]
+        [DisplayName("Nome")]
         public string Name { get; set; }
 
-        [Required][MinLength(UFLength), MaxLength(UFLength)]
+        [Required]
+        [MinLength(UFLength), MaxLength(UFLength)]
+        [DisplayName("UF")]
         public string UF { get; set; }
-
     }
 }

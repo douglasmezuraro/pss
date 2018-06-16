@@ -22,7 +22,8 @@ namespace PSS.Models
         [DisplayName("Sobrenome")]
         public string LastName { get; set; }
 
-        [Required][MinLength(CPFLength), MaxLength(CPFLength)]
+        [Required]
+        [MinLength(CPFLength), MaxLength(CPFLength)]
         public string CPF { get; set; }
 
         [Required]
