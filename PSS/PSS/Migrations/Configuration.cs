@@ -45,14 +45,14 @@ namespace PSS.Migrations
                 new State { UF = "TO", IsActive = true, Name = "Tocantins" });
 
             context.Genders.AddOrUpdate(p => p.Id,
-                new Gender { Description = "Homem", IsActive = true },
-                new Gender { Description = "Mulher", IsActive = true },
-                new Gender { Description = "Indefinido", IsActive = true });
+                new Gender { Id = 1, Description = "Homem", IsActive = true },
+                new Gender { Id = 2, Description = "Mulher", IsActive = true },
+                new Gender { Id = 3, Description = "Indefinido", IsActive = true });
 
             context.UserTypes.AddOrUpdate(p => p.Id,
-                new UserType { Description = "Administrador", IsActive = true },
-                new UserType { Description = "Cliente", IsActive = true },
-                new UserType { Description = "Visitante", IsActive = true });
+                new UserType { Id = 1, Description = "Administrador", IsActive = true },
+                new UserType { Id = 2, Description = "Cliente", IsActive = true },
+                new UserType { Id = 3, Description = "Visitante", IsActive = true });
         }
     }
 }
