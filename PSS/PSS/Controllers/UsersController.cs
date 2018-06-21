@@ -18,12 +18,19 @@ namespace PSS.Controllers
         // GET: Users
         public ActionResult Index()
         {
-            var users = db.Users.Include(u => u.Address)
-                                .Include(u => u.Gender)
-                                .Include(u => u.UserType)
-                                .Where(u => u.IsActive == true);
+            if (Session["User.Id"] != null)
+            {
+                var users = db.Users.Include(u => u.Address)
+                                    .Include(u => u.Gender)
+                                    .Include(u => u.UserType)
+                                    .Where(u => u.IsActive == true);
 
-            return View(users.ToList());
+                return View(users.ToList());
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
         }
 
         // GET: Users/Details/5
@@ -134,6 +141,25 @@ namespace PSS.Controllers
             db.Entry(user).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(User user)
+        {
+            var model = db.Users.Where(u => u.Email.Equals(user.Email) 
+                                    && u.Password.Equals(user.Password)).FirstOrDefault();
+            if (model != null)
+            {
+                Session["User.Id"] = model.Id.ToString();
+            }
+
+            return RedirectToAction("index");
         }
 
         protected override void Dispose(bool disposing)
