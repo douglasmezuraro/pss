@@ -154,10 +154,8 @@ namespace PSS.Controllers
         {
             var model = db.Users.Where(u => u.Email.Equals(user.Email) 
                                     && u.Password.Equals(user.Password)).FirstOrDefault();
-            if (model != null)
-            {
-                Session["User.Id"] = model.Id.ToString();
-            }
+
+            Session["User.Id"] = model?.Id.ToString();
 
             return RedirectToAction("index");
         }
