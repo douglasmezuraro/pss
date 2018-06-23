@@ -1,17 +1,17 @@
-﻿@model PSS.Models.Provider
+﻿@model PSS.Models.Manufacturer
 @using PSS.Utils.Constants
 
 @{
-    ViewBag.Title = View.Create;
+    ViewBag.Title = View.Edit;
 }
 
-<h2>@View.Create</h2>
+<h2>@View.Edit</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>@Html.DisplayNameForModel()</h4>
         <hr />

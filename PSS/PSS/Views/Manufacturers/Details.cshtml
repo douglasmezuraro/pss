@@ -1,24 +1,16 @@
-﻿@model PSS.Models.Provider
+﻿@model PSS.Models.Manufacturer
 @using PSS.Utils.Constants
 
 @{
-    ViewBag.Title = View.Delete;
+    ViewBag.Title = View.Details;
 }
 
-<h2>@View.Delete</h2>
+<h2>@View.Details</h2>
 
-<h3>@View.ConfirmDelete</h3>
 <div>
     <h4>@Html.DisplayNameForModel()</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.City.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.City.Name)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.ShortName)
@@ -100,15 +92,17 @@
             @Html.DisplayFor(model => model.Reference)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City.Name)
+        </dd>
+
     </dl>
-
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="@View.Delete" class="btn btn-default" /> |
-            @Html.ActionLink(View.BackToList, "Index")
-        </div>
-    }
 </div>
+<p>
+    @Html.ActionLink(View.Edit, "Edit", new { id = Model.Id }) |
+    @Html.ActionLink(View.BackToList, "Index")
+</p>

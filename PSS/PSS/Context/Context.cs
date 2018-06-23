@@ -16,5 +16,6 @@ namespace SGCO.Context
         public DbSet<FreightType> FreightTypes { get; set; }
         public DbSet<Unit> Units { get; set; }
         public DbSet<Provider> Providers { get; set; }
+        public DbSet<Manufacturer> Manufacturers { get; set; }
     }
 }

@@ -1,13 +1,11 @@
-﻿using System;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PSS.Models
 {
     [Table("Manufacturers")]
     [DisplayName("Fabricantes")]
-    public class Manufacturer : Base
+    public class Manufacturer : LegalPerson
     {
 
     }

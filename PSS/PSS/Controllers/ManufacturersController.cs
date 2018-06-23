@@ -1,5 +1,4 @@
-﻿using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -8,116 +7,116 @@ using SGCO.Context;
 
 namespace PSS.Controllers
 {
-    public class ProvidersController : Controller
+    public class ManufacturersController : Controller
     {
         private Context db = new Context();
 
-        // GET: Providers
+        // GET: Manufacturers
         public ActionResult Index()
         {
-            var providers = db.Providers.Include(p => p.City).Where(p => p.IsActive == true);
+            var manufacturers = db.Manufacturers.Include(m => m.City).Where(m => m.IsActive == true);
 
-            return View(providers.ToList());
+            return View(manufacturers.ToList());
         }
 
-        // GET: Providers/Details/5
+        // GET: Manufacturers/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Provider provider = db.Providers.Find(id);
-            if (provider == null)
+            Manufacturer manufacturer = db.Manufacturers.Find(id);
+            if (manufacturer == null)
             {
                 return HttpNotFound();
             }
-            return View(provider);
+            return View(manufacturer);
         }
 
-        // GET: Providers/Create
+        // GET: Manufacturers/Create
         public ActionResult Create()
         {
             ViewBag.CityId = new SelectList(db.Cities, "Id", "Name");
             return View();
         }
 
-        // POST: Providers/Create
+        // POST: Manufacturers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ShortName,FullName,CNPJ,Phone,Email,Address,Number,PostalCode,Complement,Reference,CityId,IsActive")] Provider provider)
+        public ActionResult Create([Bind(Include = "Id,ShortName,FullName,CNPJ,Phone,Email,Address,Number,PostalCode,Complement,Reference,CityId,IsActive")] Manufacturer manufacturer)
         {
             if (ModelState.IsValid)
             {
-                provider.IsActive = true;
-                db.Providers.Add(provider);
+                manufacturer.IsActive = true;
+                db.Manufacturers.Add(manufacturer);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CityId = new SelectList(db.Cities, "Id", "Name", provider.CityId);
-            return View(provider);
+            ViewBag.CityId = new SelectList(db.Cities, "Id", "Name", manufacturer.CityId);
+            return View(manufacturer);
         }
 
-        // GET: Providers/Edit/5
+        // GET: Manufacturers/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Provider provider = db.Providers.Find(id);
-            if (provider == null)
+            Manufacturer manufacturer = db.Manufacturers.Find(id);
+            if (manufacturer == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CityId = new SelectList(db.Cities, "Id", "Name", provider.CityId);
-            return View(provider);
+            ViewBag.CityId = new SelectList(db.Cities, "Id", "Name", manufacturer.CityId);
+            return View(manufacturer);
         }
 
-        // POST: Providers/Edit/5
+        // POST: Manufacturers/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ShortName,FullName,CNPJ,Phone,Email,Address,Number,PostalCode,Complement,Reference,CityId,IsActive")] Provider provider)
+        public ActionResult Edit([Bind(Include = "Id,ShortName,FullName,CNPJ,Phone,Email,Address,Number,PostalCode,Complement,Reference,CityId,IsActive")] Manufacturer manufacturer)
         {
             if (ModelState.IsValid)
             {
-                provider.IsActive = true;
-                db.Entry(provider).State = EntityState.Modified;
+                manufacturer.IsActive = true;
+                db.Entry(manufacturer).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CityId = new SelectList(db.Cities, "Id", "Name", provider.CityId);
-            return View(provider);
+            ViewBag.CityId = new SelectList(db.Cities, "Id", "Name", manufacturer.CityId);
+            return View(manufacturer);
         }
 
-        // GET: Providers/Delete/5
+        // GET: Manufacturers/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Provider provider = db.Providers.Find(id);
-            if (provider == null)
+            Manufacturer manufacturer = db.Manufacturers.Find(id);
+            if (manufacturer == null)
             {
                 return HttpNotFound();
             }
-            return View(provider);
+            return View(manufacturer);
         }
 
-        // POST: Providers/Delete/5
+        // POST: Manufacturers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Provider provider = db.Providers.Find(id);
-            provider.IsActive = false;
-            db.Entry(provider).State = EntityState.Modified;
+            Manufacturer manufacturer = db.Manufacturers.Find(id);
+            manufacturer.IsActive = false;
+            db.Entry(manufacturer).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

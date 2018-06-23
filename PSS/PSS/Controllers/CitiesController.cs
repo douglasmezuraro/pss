@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using PSS.Models;
 using SGCO.Context;
@@ -19,7 +16,7 @@ namespace PSS.Controllers
         public ActionResult Index()
         {
             var cities = db.Cities.Include(c => c.State).Where(c => c.IsActive == true);
-            return View(cities.ToList().Where(b => b.IsActive == true));
+            return View(cities.ToList().Where(c => c.IsActive == true));
         }
 
         // GET: Cities/Details/5

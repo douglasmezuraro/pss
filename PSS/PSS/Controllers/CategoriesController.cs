@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using PSS.Models;
 using SGCO.Context;
@@ -18,7 +15,7 @@ namespace PSS.Controllers
         // GET: Categories
         public ActionResult Index()
         {
-            return View(db.Categories.ToList().Where(p => p.IsActive == true));
+            return View(db.Categories.ToList().Where(c => c.IsActive == true));
         }
 
         // GET: Categories/Details/5
