@@ -28,7 +28,7 @@ namespace PSS.Models
         public double SalePrice { get; set; }
 
         [Required]
-        [DisplayName("Quantidade em estoque")]
+        [DisplayName("Estoque")]
         public double Stock { get; set; }
 
         [Required]
@@ -38,8 +38,8 @@ namespace PSS.Models
         [DisplayName("Perecível?")]
         public bool Perishable { get; set; }
 
-        [DisplayName("Data de validade")]
-        public DateTime Expiration { get; set; }
+        [DisplayName("Validade")]       
+        public DateTime? Expiration { get; set; }
 
         [Required]
         [DisplayName("Categoria")]
