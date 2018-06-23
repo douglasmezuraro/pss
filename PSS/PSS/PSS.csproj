@@ -207,6 +207,7 @@
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CitiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProvidersController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -217,9 +218,13 @@
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\FreightType.cs" />
     <Compile Include="Models\Gender.cs" />
+    <Compile Include="Models\LegalPerson.cs" />
     <Compile Include="Models\Manufacturer.cs" />
     <Compile Include="Models\PaymentType.cs" />
     <Compile Include="Models\OrderStatus.cs" />
+    <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\PhysicalPerson.cs" />
+    <Compile Include="Models\Provider.cs" />
     <Compile Include="Models\State.cs" />
     <Compile Include="Models\Unit.cs" />
     <Compile Include="Models\User.cs" />
@@ -279,6 +284,11 @@
     <Content Include="Views\Categories\Details.cshtml" />
     <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\Providers\Create.cshtml" />
+    <Content Include="Views\Providers\Delete.cshtml" />
+    <Content Include="Views\Providers\Details.cshtml" />
+    <Content Include="Views\Providers\Edit.cshtml" />
+    <Content Include="Views\Providers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

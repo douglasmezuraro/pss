@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -7,41 +6,10 @@ namespace PSS.Models
 {
     [Table("Users")]
     [DisplayName("Usuário")]
-    public class User : Base
+    public class User : PhysicalPerson
     {
-        protected const int CPFLength = 14;
-        protected const int PasswordMinLength = 8;
-        protected const int PasswordMaxLength = 16;
-        
         [Required]
-        [MinLength(DescriptionMinLength), MaxLength(DescriptionMaxLength)]
-        [DisplayName("Nome")]
-        public string Name { get; set; }
-
-        [Required]
-        [MinLength(DescriptionMinLength), MaxLength(DescriptionMaxLength)]
-        [DisplayName("Sobrenome")]
-        public string LastName { get; set; }
-
-        [Required]
-        [MinLength(CPFLength), MaxLength(CPFLength)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:###-##-####}")]
-        public string CPF { get; set; }
-
-        [Required]
-        [DisplayName("Telefone")]
-        public string Phone { get; set; }
-
-        [Required]
-        [DisplayName("E-mail")]        
-        public string Email { get; set; }
-
-        [Required]
-        [DisplayName("Nascimento")]
-        public DateTime Birth { get; set; }
-
-        [Required]
-        [MinLength(PasswordMinLength), MaxLength(PasswordMaxLength)]
+        [MinLength(8), MaxLength(16)]
         [PasswordPropertyText(true)]
         [DisplayName("Senha")]
         public string Password { get; set; }
@@ -52,37 +20,5 @@ namespace PSS.Models
 
         [DisplayName("Tipo de usuário")]
         public UserType UserType { get; set; }
-
-        [Required]
-        [DisplayName("Gênero")]
-        public int GenderId { get; set; }
-
-        [DisplayName("Gênero")]
-        public Gender Gender { get; set; }
-
-        [Required]
-        [DisplayName("Endereço")]
-        public string Address { get; set; }
-
-        [Required]
-        [DisplayName("Número")]
-        public int Number { get; set; }
-
-        [Required]
-        [DisplayName("CEP")]
-        public string PostalCode { get; set; }
-
-        [DisplayName("Complemento")]
-        public string Complement { get; set; }
-
-        [DisplayName("Referência")]
-        public string Reference { get; set; }
-
-        [Required]
-        [DisplayName("Cidade")]
-        public int CityId { get; set; }
-
-        [DisplayName("Cidade")]
-        public City City { get; set; }
     }
 }
