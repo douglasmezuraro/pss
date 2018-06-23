@@ -1,10 +1,7 @@
 namespace PSS.Migrations
 {
     using PSS.Models;
-    using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<SGCO.Context.Context>
     {
@@ -15,7 +12,7 @@ namespace PSS.Migrations
 
         protected override void Seed(SGCO.Context.Context context)
         {
-            context.States.AddOrUpdate(p => p.Id,
+            context.States.AddOrUpdate(state => state.Id,
                 new State { UF = "AC", Name = "Acre", IsActive = true },
                 new State { UF = "AL", Name = "Alagoas", IsActive = true },
                 new State { UF = "AP", Name = "Amapá", IsActive = true },
@@ -44,35 +41,35 @@ namespace PSS.Migrations
                 new State { UF = "SE", Name = "Sergipe", IsActive = true },
                 new State { UF = "TO", Name = "Tocantins", IsActive = true });
 
-            context.Genders.AddOrUpdate(p => p.Id,
+            context.Genders.AddOrUpdate(gender => gender.Id,
                 new Gender { Id = 1, Description = "Homem", IsActive = true },
                 new Gender { Id = 2, Description = "Mulher", IsActive = true },
                 new Gender { Id = 3, Description = "Indefinido", IsActive = true });
 
-            context.UserTypes.AddOrUpdate(p => p.Id,
+            context.UserTypes.AddOrUpdate(userType => userType.Id,
                 new UserType { Id = 1, Description = "Administrador", IsActive = true },
                 new UserType { Id = 2, Description = "Cliente", IsActive = true },
                 new UserType { Id = 3, Description = "Visitante", IsActive = true });
 
-            context.PaymentTypes.AddOrUpdate(p => p.Id,
+            context.PaymentTypes.AddOrUpdate(paymentType => paymentType.Id,
                 new PaymentType { Id = 1, Description = "Dinheiro", IsActive = true },
                 new PaymentType { Id = 2, Description = "Cheque", IsActive = true },
                 new PaymentType { Id = 3, Description = "Cartão de crédito", IsActive = true },
                 new PaymentType { Id = 4, Description = "Cartão de débito", IsActive = true });
 
-            context.OrderStatuses.AddOrUpdate(p => p.Id,
+            context.OrderStatuses.AddOrUpdate(orderStatus => orderStatus.Id,
                 new OrderStatus { Id = 1, Description = "Não finalizado", IsActive = true },
                 new OrderStatus { Id = 2, Description = "Finalizado", IsActive = true },
                 new OrderStatus { Id = 3, Description = "Em separação", IsActive = true },
                 new OrderStatus { Id = 4, Description = "Saída para entrega", IsActive = true },
                 new OrderStatus { Id = 5, Description = "Entregue", IsActive = true });
 
-            context.FreightTypes.AddOrUpdate(p => p.Id,
+            context.FreightTypes.AddOrUpdate(freightType => freightType.Id,
                 new FreightType { Id = 1, Description = "Sedex", IsActive = true },
                 new FreightType { Id = 2, Description = "PAC", IsActive = true },
                 new FreightType { Id = 3, Description = "Transportadora", IsActive = true });
 
-            context.Units.AddOrUpdate(p => p.Id,
+            context.Units.AddOrUpdate(unit => unit.Id,
                 new Unit { Id = 1, Description = "Peça", IsActive = true },
                 new Unit { Id = 2, Description = "Caixa", IsActive = true },
                 new Unit { Id = 3, Description = "Pacote", IsActive = true });

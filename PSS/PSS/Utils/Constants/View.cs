@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace PSS.Utils.Constants
+﻿namespace PSS.Utils.Constants
 {
     public static class View
     {
