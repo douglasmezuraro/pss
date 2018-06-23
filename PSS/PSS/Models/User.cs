@@ -52,17 +52,35 @@ namespace PSS.Models
         public UserType UserType { get; set; }
 
         [Required]
-        [DisplayName("Endereço")]
-        public int AddressId { get; set; }
-
-        [DisplayName("Endereço")]
-        public Address Address { get; set; }
-
-        [Required]
         [DisplayName("Gênero")]
         public int GenderId { get; set; }
 
         [DisplayName("Gênero")]
         public Gender Gender { get; set; }
+
+        [Required]
+        [DisplayName("Endereço")]
+        public string Address { get; set; }
+
+        [Required]
+        [DisplayName("Número")]
+        public int Number { get; set; }
+
+        [Required]
+        [DisplayName("CEP")]
+        public string PostalCode { get; set; }
+
+        [DisplayName("Complemento")]
+        public string Complement { get; set; }
+
+        [DisplayName("Referência")]
+        public string Reference { get; set; }
+
+        [Required]
+        [DisplayName("Cidade")]
+        public int CityId { get; set; }
+
+        [DisplayName("Cidade")]
+        public City City { get; set; }
     }
 }

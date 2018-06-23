@@ -20,7 +20,7 @@ namespace PSS.Controllers
         {
             if (Session["User.Id"] != null)
             {
-                var users = db.Users.Include(u => u.Address)
+                var users = db.Users.Include(u => u.City)
                                     .Include(u => u.Gender)
                                     .Include(u => u.UserType)
                                     .Where(u => u.IsActive == true);
@@ -51,7 +51,7 @@ namespace PSS.Controllers
         // GET: Users/Create
         public ActionResult Create()
         {
-            ViewBag.AddressId = new SelectList(db.Addresses, "Id", "Name");
+            ViewBag.CityId = new SelectList(db.Cities, "Id", "Name");
             ViewBag.GenderId = new SelectList(db.Genders, "Id", "Description");
             ViewBag.UserTypeId = new SelectList(db.UserTypes, "Id", "Description");
             return View();
@@ -62,7 +62,7 @@ namespace PSS.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,LastName,CPF,Phone,Email,Birth,Password,UserTypeId,AddressId,GenderId,IsActive")] User user)
+        public ActionResult Create([Bind(Include = "Id,Name,LastName,CPF,Phone,Email,Birth,Password,UserTypeId,GenderId,Address,Number,PostalCode,Complement,Reference,CityId,IsActive")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -72,7 +72,7 @@ namespace PSS.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.AddressId = new SelectList(db.Addresses, "Id", "Name", user.AddressId);
+            ViewBag.CityId = new SelectList(db.Cities, "Id", "Name", user.CityId);
             ViewBag.GenderId = new SelectList(db.Genders, "Id", "Description", user.GenderId);
             ViewBag.UserTypeId = new SelectList(db.UserTypes, "Id", "Description", user.UserTypeId);
             return View(user);
@@ -90,7 +90,7 @@ namespace PSS.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.AddressId = new SelectList(db.Addresses, "Id", "Name", user.AddressId);
+            ViewBag.CityId = new SelectList(db.Cities, "Id", "Name", user.CityId);
             ViewBag.GenderId = new SelectList(db.Genders, "Id", "Description", user.GenderId);
             ViewBag.UserTypeId = new SelectList(db.UserTypes, "Id", "Description", user.UserTypeId);
             return View(user);
@@ -101,7 +101,7 @@ namespace PSS.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,LastName,CPF,Phone,Email,Birth,Password,UserTypeId,AddressId,GenderId,IsActive")] User user)
+        public ActionResult Edit([Bind(Include = "Id,Name,LastName,CPF,Phone,Email,Birth,Password,UserTypeId,GenderId,Address,Number,PostalCode,Complement,Reference,CityId,IsActive")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -110,7 +110,7 @@ namespace PSS.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.AddressId = new SelectList(db.Addresses, "Id", "Name", user.AddressId);
+            ViewBag.CityId = new SelectList(db.Cities, "Id", "Name", user.CityId);
             ViewBag.GenderId = new SelectList(db.Genders, "Id", "Description", user.GenderId);
             ViewBag.UserTypeId = new SelectList(db.UserTypes, "Id", "Description", user.UserTypeId);
             return View(user);
@@ -152,7 +152,7 @@ namespace PSS.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(User user)
         {
-            var model = db.Users.Where(u => u.Email.Equals(user.Email) 
+            var model = db.Users.Where(u => u.Email.Equals(user.Email)
                                     && u.Password.Equals(user.Password)).FirstOrDefault();
 
             Session["User.Id"] = model?.Id.ToString();
