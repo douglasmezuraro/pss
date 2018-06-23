@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using PSS.Models;
 
 namespace SGCO.Context
@@ -17,5 +18,11 @@ namespace SGCO.Context
         public DbSet<Unit> Units { get; set; }
         public DbSet<Provider> Providers { get; set; }
         public DbSet<Manufacturer> Manufacturers { get; set; }
+        public DbSet<Product> Products { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+        }
     }
 }

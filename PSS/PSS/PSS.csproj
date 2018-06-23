@@ -225,6 +225,7 @@
     <Compile Include="Models\OrderStatus.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\PhysicalPerson.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Provider.cs" />
     <Compile Include="Models\State.cs" />
     <Compile Include="Models\Unit.cs" />
