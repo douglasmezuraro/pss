@@ -25,6 +25,7 @@ namespace PSS.Models
 
         [Required]
         [MinLength(CPFLength), MaxLength(CPFLength)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:###-##-####}")]
         public string CPF { get; set; }
 
         [Required]
@@ -32,7 +33,7 @@ namespace PSS.Models
         public string Phone { get; set; }
 
         [Required]
-        [DisplayName("E-mail")]
+        [DisplayName("E-mail")]        
         public string Email { get; set; }
 
         [Required]
@@ -41,6 +42,7 @@ namespace PSS.Models
 
         [Required]
         [MinLength(PasswordMinLength), MaxLength(PasswordMaxLength)]
+        [PasswordPropertyText(true)]
         [DisplayName("Senha")]
         public string Password { get; set; }
 
