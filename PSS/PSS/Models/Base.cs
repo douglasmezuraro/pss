@@ -4,7 +4,7 @@ namespace PSS.Models
 {
     public abstract class Base
     {
-        protected const int DescriptionMinLength = 5;
+        protected const int DescriptionMinLength = 2;
         protected const int DescriptionMaxLength = 100;
 
         [Key][ScaffoldColumn(false)]

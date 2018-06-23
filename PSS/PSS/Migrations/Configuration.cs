@@ -16,33 +16,33 @@ namespace PSS.Migrations
         protected override void Seed(SGCO.Context.Context context)
         {
             context.States.AddOrUpdate(p => p.Id,
-                        new State { UF = "AC", IsActive = true, Name = "Acre" },
-                        new State { UF = "AL", IsActive = true, Name = "Alagoas" },
-                        new State { UF = "AP", IsActive = true, Name = "Amapá" },
-                        new State { UF = "AM", IsActive = true, Name = "Amazonas" },
-                        new State { UF = "BA", IsActive = true, Name = "Bahia" },
-                        new State { UF = "CE", IsActive = true, Name = "Ceará" },
-                        new State { UF = "DF", IsActive = true, Name = "Distrito Federal" },
-                        new State { UF = "ES", IsActive = true, Name = "Espírito Santo" },
-                        new State { UF = "GO", IsActive = true, Name = "Goiás" },
-                        new State { UF = "MA", IsActive = true, Name = "Maranhão" },
-                        new State { UF = "MT", IsActive = true, Name = "Mato Grosso" },
-                        new State { UF = "MS", IsActive = true, Name = "Mato Grosso do Sul" },
-                        new State { UF = "MG", IsActive = true, Name = "Minas Gerais" },
-                        new State { UF = "PA", IsActive = true, Name = "Pará" },
-                        new State { UF = "PB", IsActive = true, Name = "Paraíba" },
-                        new State { UF = "PR", IsActive = true, Name = "Paraná" },
-                        new State { UF = "PE", IsActive = true, Name = "Pernambuco" },
-                        new State { UF = "PI", IsActive = true, Name = "Piauí" },
-                        new State { UF = "RJ", IsActive = true, Name = "Rio de Janeiro" },
-                        new State { UF = "RN", IsActive = true, Name = "Rio Grande do Norte" },
-                        new State { UF = "RS", IsActive = true, Name = "Rio Grande do Sul" },
-                        new State { UF = "RO", IsActive = true, Name = "Rondônia" },
-                        new State { UF = "RR", IsActive = true, Name = "Roraima" },
-                        new State { UF = "SC", IsActive = true, Name = "Santa Catarina" },
-                        new State { UF = "SP", IsActive = true, Name = "São Paulo" },
-                        new State { UF = "SE", IsActive = true, Name = "Sergipe" },
-                        new State { UF = "TO", IsActive = true, Name = "Tocantins" });
+                new State { UF = "AC", Name = "Acre", IsActive = true },
+                new State { UF = "AL", Name = "Alagoas", IsActive = true },
+                new State { UF = "AP", Name = "Amapá", IsActive = true },
+                new State { UF = "AM", Name = "Amazonas", IsActive = true },
+                new State { UF = "BA", Name = "Bahia", IsActive = true },
+                new State { UF = "CE", Name = "Ceará", IsActive = true },
+                new State { UF = "DF", Name = "Distrito Federal", IsActive = true },
+                new State { UF = "ES", Name = "Espírito Santo", IsActive = true },
+                new State { UF = "GO", Name = "Goiás", IsActive = true },
+                new State { UF = "MA", Name = "Maranhão", IsActive = true },
+                new State { UF = "MT", Name = "Mato Grosso", IsActive = true },
+                new State { UF = "MS", Name = "Mato Grosso do Sul", IsActive = true },
+                new State { UF = "MG", Name = "Minas Gerais", IsActive = true },
+                new State { UF = "PA", Name = "Pará", IsActive = true },
+                new State { UF = "PB", Name = "Paraíba", IsActive = true },
+                new State { UF = "PR", Name = "Paraná", IsActive = true },
+                new State { UF = "PE", Name = "Pernambuco", IsActive = true },
+                new State { UF = "PI", Name = "Piauí", IsActive = true },
+                new State { UF = "RJ", Name = "Rio de Janeiro", IsActive = true },
+                new State { UF = "RN", Name = "Rio Grande do Norte", IsActive = true },
+                new State { UF = "RS", Name = "Rio Grande do Sul", IsActive = true },
+                new State { UF = "RO", Name = "Rondônia", IsActive = true },
+                new State { UF = "RR", Name = "Roraima", IsActive = true },
+                new State { UF = "SC", Name = "Santa Catarina", IsActive = true },
+                new State { UF = "SP", Name = "São Paulo", IsActive = true },
+                new State { UF = "SE", Name = "Sergipe", IsActive = true },
+                new State { UF = "TO", Name = "Tocantins", IsActive = true });
 
             context.Genders.AddOrUpdate(p => p.Id,
                 new Gender { Id = 1, Description = "Homem", IsActive = true },
@@ -53,6 +53,29 @@ namespace PSS.Migrations
                 new UserType { Id = 1, Description = "Administrador", IsActive = true },
                 new UserType { Id = 2, Description = "Cliente", IsActive = true },
                 new UserType { Id = 3, Description = "Visitante", IsActive = true });
+
+            context.PaymentTypes.AddOrUpdate(p => p.Id,
+                new PaymentType { Id = 1, Description = "Dinheiro", IsActive = true },
+                new PaymentType { Id = 2, Description = "Cheque", IsActive = true },
+                new PaymentType { Id = 3, Description = "Cartão de crédito", IsActive = true },
+                new PaymentType { Id = 4, Description = "Cartão de débito", IsActive = true });
+
+            context.OrderStatuses.AddOrUpdate(p => p.Id,
+                new OrderStatus { Id = 1, Description = "Não finalizado", IsActive = true },
+                new OrderStatus { Id = 2, Description = "Finalizado", IsActive = true },
+                new OrderStatus { Id = 3, Description = "Em separação", IsActive = true },
+                new OrderStatus { Id = 4, Description = "Saída para entrega", IsActive = true },
+                new OrderStatus { Id = 5, Description = "Entregue", IsActive = true });
+
+            context.FreightTypes.AddOrUpdate(p => p.Id,
+                new FreightType { Id = 1, Description = "Sedex", IsActive = true },
+                new FreightType { Id = 2, Description = "PAC", IsActive = true },
+                new FreightType { Id = 3, Description = "Transportadora", IsActive = true });
+
+            context.Units.AddOrUpdate(p => p.Id,
+                new Unit { Id = 1, Description = "Peça", IsActive = true },
+                new Unit { Id = 2, Description = "Caixa", IsActive = true },
+                new Unit { Id = 3, Description = "Pacote", IsActive = true });
         }
     }
 }
