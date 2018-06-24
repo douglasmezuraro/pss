@@ -153,6 +153,7 @@ namespace PSS.Controllers
                                     && u.Password.Equals(user.Password)).FirstOrDefault();
 
             Session["User.Id"] = model?.Id.ToString();
+            Session["User"] = model;
 
             return RedirectToAction("index");
         }
@@ -160,6 +161,7 @@ namespace PSS.Controllers
         public ActionResult Logoff()
         {
             Session["User.Id"] = null;
+            Session["User"] = null;
             return RedirectToAction("index");
         }
 
