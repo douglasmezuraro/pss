@@ -157,6 +157,12 @@ namespace PSS.Controllers
             return RedirectToAction("index");
         }
 
+        public ActionResult Logoff()
+        {
+            Session["User.Id"] = null;
+            return RedirectToAction("index");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
