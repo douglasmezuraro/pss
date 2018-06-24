@@ -125,6 +125,13 @@ namespace PSS.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        [ValidateAntiForgeryToken]
+        public override string ToString()
+        {
+            return "SaleOrders";
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

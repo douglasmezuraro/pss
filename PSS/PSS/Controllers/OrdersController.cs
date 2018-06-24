@@ -8,9 +8,11 @@ namespace PSS.Controllers
     {
         public ActionResult Index()
         {
-            User user = (User)Session["User"];
-            OrderFactory factory = new OrderFactory();
-            return RedirectToAction("Index", factory.GetControllerName(user));
+            var user = (User)Session["User"];
+            var factory = new OrderFactory();
+            var controller = factory.CreateController(user);
+
+            return RedirectToAction("Index", controller.ToString());
         }
     }
 }

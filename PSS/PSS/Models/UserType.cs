@@ -9,6 +9,10 @@ namespace PSS.Models
     [DisplayName("Tipo de usuário")]    
     public class UserType : Base 
     {
+        public const int Admin = 1;
+        public const int Client = 2;
+        public const int Visitor = 3;
+
         [Required]
         [MinLength(DescriptionMinLength), MaxLength(DescriptionMaxLength)]
         [DisplayName("Descrição")]

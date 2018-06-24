@@ -15,7 +15,7 @@ namespace PSS.Controllers
         // GET: Users
         public ActionResult Index()
         {
-            if (Session["User.Id"] != null)
+            if (Session["User"] != null)
             {
                 var users = db.Users.Include(u => u.City)
                                     .Include(u => u.Gender)
@@ -152,7 +152,6 @@ namespace PSS.Controllers
             var model = db.Users.Where(u => u.Email.Equals(user.Email)
                                     && u.Password.Equals(user.Password)).FirstOrDefault();
 
-            Session["User.Id"] = model?.Id.ToString();
             Session["User"] = model;
 
             return RedirectToAction("index");
@@ -160,7 +159,6 @@ namespace PSS.Controllers
 
         public ActionResult Logoff()
         {
-            Session["User.Id"] = null;
             Session["User"] = null;
             return RedirectToAction("index");
         }

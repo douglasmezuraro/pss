@@ -1,38 +1,20 @@
-﻿using PSS.Models;
+﻿using PSS.Controllers;
+using PSS.Models;
+using System.Web.Mvc;
 
 namespace PSS.Utils
 {
     public class OrderFactory
     {
-        private enum UserTypeEnum
+        public Controller CreateController(User user)
         {
-            Adminstrator,
-            Client,
-            Visitor
-        }
-
-        public string GetControllerName(User user)
-        {
-            UserTypeEnum Type = (UserTypeEnum) user.UserTypeId;
-            string ControllerName;
-
-            switch (Type)
+            switch (user.UserTypeId)
             {
-                case UserTypeEnum.Adminstrator:
-                    ControllerName = "PurchaseOrders";
-                    break;
-                case UserTypeEnum.Client:
-                    ControllerName = "SaleOrders";
-                    break;
-                case UserTypeEnum.Visitor:
-                    ControllerName = "SaleOrders";
-                    break;
-                default:
-                    ControllerName = "Home";
-                    break;     
+                case UserType.Admin   : return new PurchaseOrdersController(); 
+                case UserType.Client  : return new SaleOrdersController();               
+                case UserType.Visitor : return new SaleOrdersController();         
+                default : return new HomeController(); 
             }
-
-            return ControllerName;
         }
     }
 }
