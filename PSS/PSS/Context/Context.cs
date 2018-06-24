@@ -19,10 +19,16 @@ namespace SGCO.Context
         public DbSet<Provider> Providers { get; set; }
         public DbSet<Manufacturer> Manufacturers { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Item> Items { get; set; }
+        public DbSet<Installment> Installments { get; set; }
+        public DbSet<Freight> Freights { get; set; }
+        public DbSet<SaleOrder> SaleOrders { get; set; }
+        public DbSet<PurchaseOrder> PurchaseOrders { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
         }
+
     }
 }

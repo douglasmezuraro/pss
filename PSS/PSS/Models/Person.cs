@@ -33,7 +33,7 @@ namespace PSS.Models
 
         [Required]
         [DisplayName("Cidade")]
-        public int CityId { get; set; }
+        public int? CityId { get; set; }
 
         [DisplayName("Cidade")]
         public City City { get; set; }

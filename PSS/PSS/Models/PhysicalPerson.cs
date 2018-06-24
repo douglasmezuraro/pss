@@ -27,7 +27,7 @@ namespace PSS.Models
 
         [Required]
         [DisplayName("Gênero")]
-        public int GenderId { get; set; }
+        public int? GenderId { get; set; }
 
         [DisplayName("Gênero")]
         public Gender Gender { get; set; }
