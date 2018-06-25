@@ -4,7 +4,7 @@ using System.Web.Mvc;
 
 namespace PSS.Utils
 {
-    public class OrderFactory
+    public class OrderControllerFactory
     {
         public Controller CreateController(User user)
         {

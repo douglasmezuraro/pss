@@ -9,7 +9,7 @@ namespace PSS.Controllers
         public ActionResult Index()
         {
             var user = (User)Session["User"];
-            var factory = new OrderFactory();
+            var factory = new OrderControllerFactory();
             var controller = factory.CreateController(user);
 
             return RedirectToAction("Index", controller.ToString());
