@@ -35,6 +35,10 @@ namespace PSS.Controllers
             {
                 return HttpNotFound();
             }
+            product.Category = db.Categories.Find(product.CategoryId);
+            product.Manufacturer = db.Manufacturers.Find(product.ManufacturerId);
+            product.Provider = db.Providers.Find(product.ProviderId);
+            product.Unit = db.Units.Find(product.UnitId);
             return View(product);
         }
 
@@ -122,6 +126,10 @@ namespace PSS.Controllers
             {
                 return HttpNotFound();
             }
+            product.Category = db.Categories.Find(product.CategoryId);
+            product.Manufacturer = db.Manufacturers.Find(product.ManufacturerId);
+            product.Provider = db.Providers.Find(product.ProviderId);
+            product.Unit = db.Units.Find(product.UnitId);
             return View(product);
         }
 

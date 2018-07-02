@@ -32,6 +32,7 @@ namespace PSS.Controllers
             {
                 return HttpNotFound();
             }
+            provider.City = db.Cities.Find(provider.CityId);
             return View(provider);
         }
 
@@ -107,6 +108,7 @@ namespace PSS.Controllers
             {
                 return HttpNotFound();
             }
+            provider.City = db.Cities.Find(provider.CityId);
             return View(provider);
         }
 

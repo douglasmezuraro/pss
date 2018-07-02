@@ -31,6 +31,7 @@ namespace PSS.Controllers
             {
                 return HttpNotFound();
             }
+            city.State = db.States.Find(city.StateId);
             return View(city);
         }
 

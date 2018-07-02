@@ -13,30 +13,6 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.City.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.City.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Gender.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Gender.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UserType.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UserType.Description)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
 
@@ -85,11 +61,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Password)
+            @Html.DisplayNameFor(model => model.Gender)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Password)
+            @Html.DisplayFor(model => model.Gender.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserType.Description)
         </dd>
 
         <dt>
@@ -132,6 +116,13 @@
             @Html.DisplayFor(model => model.Reference)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City.Name)
+        </dd>
     </dl>
 
     @using (Html.BeginForm()) {

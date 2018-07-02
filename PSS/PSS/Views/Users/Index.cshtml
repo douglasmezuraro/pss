@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<PSS.Models.User>
 @using PSS.Utils.Constants
+@using PSS.Models
 
 @{
     ViewBag.Title = View.Index;
@@ -7,9 +8,6 @@
 
 <h2>@View.Index</h2>
 
-<p>
-    @Html.ActionLink(View.Create, "Create")
-</p>
 <table class="table">
     <tr>
         <th>

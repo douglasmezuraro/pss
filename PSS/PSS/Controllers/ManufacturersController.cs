@@ -31,6 +31,7 @@ namespace PSS.Controllers
             {
                 return HttpNotFound();
             }
+            manufacturer.City = db.Cities.Find(manufacturer.CityId);
             return View(manufacturer);
         }
 

@@ -1,21 +1,22 @@
 ﻿@model IEnumerable<PSS.Models.SaleOrder>
+@using PSS.Utils.Constants
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = View.Index;
 }
 
-<h2>Index</h2>
+<h2>@View.Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink(View.Create, "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.OrderStatus.Description)
+            @Html.DisplayNameFor(model => model.OrderStatus)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.User.Password)
+            @Html.DisplayNameFor(model => model.User)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TotalValue)
@@ -29,10 +30,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.OrderStatus.Description)
+            @Html.DisplayFor(modelItem => item.OrderStatus)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.User.Password)
+            @Html.DisplayFor(modelItem => item.User)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.TotalValue)
@@ -41,9 +42,9 @@
             @Html.DisplayFor(modelItem => item.Date)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink(View.Edit, "Edit", new { id=item.Id }) |
+            @Html.ActionLink(View.Details, "Details", new { id=item.Id }) |
+            @Html.ActionLink(View.Delete, "Delete", new { id=item.Id })
         </td>
     </tr>
 }

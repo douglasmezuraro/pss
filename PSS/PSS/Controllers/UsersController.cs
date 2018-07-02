@@ -15,12 +15,19 @@ namespace PSS.Controllers
         // GET: Users
         public ActionResult Index()
         {
-            if (Session["User"] != null)
+            User loggedUser = (User)Session["User"];
+
+            if (loggedUser != null)
             {
                 var users = db.Users.Include(u => u.City)
                                     .Include(u => u.Gender)
                                     .Include(u => u.UserType)
                                     .Where(u => u.IsActive == true);
+
+                if (loggedUser.UserTypeId == UserType.Client)
+                {
+                    return View(users.ToList().Where(u => u.Id == loggedUser.Id));
+                }
 
                 return View(users.ToList());
             }
@@ -42,6 +49,9 @@ namespace PSS.Controllers
             {
                 return HttpNotFound();
             }
+            user.City = db.Cities.Find(user.CityId);
+            user.Gender = db.Genders.Find(user.GenderId);
+            user.UserType = db.UserTypes.Find(user.UserTypeId);
             return View(user);
         }
 
@@ -125,6 +135,9 @@ namespace PSS.Controllers
             {
                 return HttpNotFound();
             }
+            user.City = db.Cities.Find(user.CityId);
+            user.Gender = db.Genders.Find(user.GenderId);
+            user.UserType = db.UserTypes.Find(user.UserTypeId);
             return View(user);
         }
 
